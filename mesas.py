@@ -6,15 +6,15 @@ def cargar_grupos(ruta):
     archivo.close()
     return grupos
 
-def sentar_grupos(grupos, restaurante):
-    mesas = []
-    ocupacion = 0
-    numero_mesa = 1
+
+def sentar_grupos(grupos, restaurante, mesas):
+    ocupacion = contar_clientes(mesas)
+    numero_mesa = len(mesas) + 1
 
     for grupo in grupos:
         clientes = grupo["clientes"]
 
-        if numero_mesa > restaurante["mesas_max"]:
+        if len(mesas) >= restaurante["mesas_max"]:
             print("No quedan mesas disponibles.")
             break
 
