@@ -1,4 +1,4 @@
-
+import json
 def ampliar_menu(restaurante,pedido,precio):
     plato=restaurante["menu"]
     if pedido in plato:
@@ -14,4 +14,10 @@ def ampliar_menu(restaurante,pedido,precio):
 
             plato[pedido] = precio
             print("Plato añadido")
-    print(restaurante)
+        else:
+            print("No es posible ese precio")
+    with open("restaurante.json", "w", encoding="utf-8") as archivo:
+        json.dump(restaurante, archivo, indent=4, ensure_ascii=False)
+
+    return restaurante
+
