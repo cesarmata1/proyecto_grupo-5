@@ -25,7 +25,7 @@ El objetivo es desarrollar una aplicación de consola para gestionar un restaura
 ## Integrantes
 - Integrante 1: César Mata Rodríguez
 - Integrante 2: Alberto Mingo Martín 
-- Integrante 3: Angel Piédrola Garcia
+- Integrante 3: Angel Piédrola García
 
 ## Tecnologías
 - Python
