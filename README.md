@@ -23,9 +23,9 @@ El objetivo es desarrollar una aplicación de consola para gestionar un restaura
 - `mesas/`: archivos con grupos de clientes.
 
 ## Integrantes
-- Integrante 1: [Nombre]
-- Integrante 2: [Nombre]
-- Integrante 3: [Nombre]
+- Integrante 1: César Mata Rodríguez
+- Integrante 2: Alberto Mingo Martín 
+- Integrante 3: Angel Piédrola Garcia
 
 ## Tecnologías
 - Python
