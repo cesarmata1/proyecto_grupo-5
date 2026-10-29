@@ -1,4 +1,6 @@
+
 import json
+
 
 def cargar_grupos(ruta):
     archivo = open(ruta, "r", encoding="utf-8")
@@ -24,7 +26,9 @@ def sentar_grupos(grupos, restaurante, mesas):
 
         mesa = {
             "numero": numero_mesa,
-            "clientes": clientes
+            "clientes": clientes,
+            "estado": "ocupada",
+            "pedido": {}
         }
 
         mesas.append(mesa)
@@ -41,3 +45,4 @@ def contar_clientes(mesas):
         total += mesa["clientes"]
 
     return total
+
