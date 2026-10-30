@@ -1,4 +1,6 @@
 import json
+
+#Funcion para ampliar menu Punto 8
 def ampliar_menu(restaurante,nombre_plato,precio):
     plato=restaurante["menu"]
     if nombre_plato in plato:
@@ -20,4 +22,14 @@ def ampliar_menu(restaurante,nombre_plato,precio):
         json.dump(restaurante, archivo, indent=4, ensure_ascii=False)
 
     return restaurante
+
+# Funcion de mostrar la carta del restaurnate
+ 
+def mostrar_carta(restaurante):
+    for plato, precio in restaurante["menu"].items():
+        print(plato, ":", precio,"€")
+
+
+
+    
 
