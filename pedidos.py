@@ -1,10 +1,10 @@
 import json
-def ampliar_menu(restaurante,pedido,precio):
+def ampliar_menu(restaurante,nombre_plato,precio):
     plato=restaurante["menu"]
-    if pedido in plato:
+    if nombre_plato in plato:
         print("El plato ya existe, se modificara el precio")
         if precio > 0:
-         plato[pedido]=precio
+         plato[nombre_plato]=precio
         
         else:
             print("No es posible ese precio")
@@ -12,7 +12,7 @@ def ampliar_menu(restaurante,pedido,precio):
     else:
         if precio > 0:
 
-            plato[pedido] = precio
+            plato[nombre_plato] = precio
             print("Plato añadido")
         else:
             print("No es posible ese precio")
