@@ -72,6 +72,12 @@ def mostrar_mesas(mesas):
             print("Clientes:", mesa["clientes"])
             print("Estado:", mesa["estado"])
             print("--------------------")
+            
+def cargar_restaurante(ruta):
+    archivo = open(ruta, "r", encoding="utf-8")
+    restaurante = json.load(archivo)
+    archivo.close()
+    return restaurante
 
 
 
