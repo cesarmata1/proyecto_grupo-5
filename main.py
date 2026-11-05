@@ -1,5 +1,5 @@
 import json
-from mesas import cargar_grupos, sentar_grupos, contar_clientes
+from mesas import cargar_grupos, sentar_grupos, contar_clientes, mostrar_mesas
 
 
 def main():
@@ -10,11 +10,18 @@ def main():
     grupos = cargar_grupos("grupos.json")
 
     mesas = []
-    mesas = sentar_grupos(grupos, restaurante, mesas)
+    numero_mesa = 1
 
-    print("Restaurante:", restaurante["nombre"])
+    mesas, numero_mesa = sentar_grupos(
+        grupos, restaurante, mesas, numero_mesa
+    )
+
+    print("\nRestaurante:", restaurante["nombre"])
     print("Mesas ocupadas:", len(mesas))
     print("Clientes sentados:", contar_clientes(mesas))
+
+    print("\nEstado de las mesas:")
+    mostrar_mesas(mesas)
 
 
 if __name__ == "__main__":

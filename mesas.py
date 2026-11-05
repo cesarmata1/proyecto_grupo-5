@@ -7,12 +7,15 @@ def cargar_grupos(ruta):
     return grupos
 
 
-def sentar_grupos(grupos, restaurante, mesas):
+def sentar_grupos(grupos, restaurante, mesas, numero_mesa):
     ocupacion = contar_clientes(mesas)
-    numero_mesa = len(mesas) + 1
 
     for grupo in grupos:
         clientes = grupo["clientes"]
+
+        if clientes <= 0:
+            print("Numero de clientes invalido.")
+            continue
 
         if len(mesas) >= restaurante["mesas_max"]:
             print("No quedan mesas disponibles.")
@@ -33,7 +36,10 @@ def sentar_grupos(grupos, restaurante, mesas):
         ocupacion += clientes
         numero_mesa += 1
 
-    return mesas
+        print("Grupo sentado en la mesa", mesa["numero"])
+
+    return mesas, numero_mesa
+
 
 
 def contar_clientes(mesas):
@@ -43,4 +49,14 @@ def contar_clientes(mesas):
         total += mesa["clientes"]
 
     return total
+
+def mostrar_mesas(mesas):
+    if len(mesas) == 0:
+        print("No hay mesas ocupadas.")
+    else:
+        for mesa in mesas:
+            print("Mesa:", mesa["numero"])
+            print("Clientes:", mesa["clientes"])
+            print("Estado:", mesa["estado"])
+            print("--------------------")
 
