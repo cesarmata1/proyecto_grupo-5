@@ -1,6 +1,6 @@
 import json
 #Funcion para ampliar menu Punto 8
-def ampliar_menu(restaurante,nombre_plato,precio):
+def ampliar_menu(restaurante, nombre_plato, precio, ruta_restaurante):
     plato=restaurante["menu"]
     if nombre_plato in plato:
         print("El plato ya existe, se modificara el precio")
@@ -17,9 +17,8 @@ def ampliar_menu(restaurante,nombre_plato,precio):
             print("Plato añadido")
         else:
             print("No es posible ese precio")
-    with open("restaurante.json", "w", encoding="utf-8") as archivo:
+    with open(ruta_restaurante, "w", encoding="utf-8") as archivo:
         json.dump(restaurante, archivo, indent=4, ensure_ascii=False)
-
     return restaurante
 
 # Funcion de mostrar la carta del restaurnate
