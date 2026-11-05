@@ -1,6 +1,4 @@
-
 import json
-
 
 def cargar_grupos(ruta):
     archivo = open(ruta, "r", encoding="utf-8")
