@@ -1,5 +1,4 @@
 import json
-
 #Funcion para ampliar menu Punto 8
 def ampliar_menu(restaurante,nombre_plato,precio):
     plato=restaurante["menu"]
@@ -42,9 +41,12 @@ def tomar_pedido(restaurante,mesa):
             while pedido != "Eso es todo":
                 if pedido in menu.keys():
                      if pedido in pedidos:
-                         pedidos[pedido]+=1
+                         pedidos[pedido]["cantidad"] += 1
                      else:
-                         pedidos[pedido]=1
+                         pedidos[pedido] = {
+                                        "cantidad": 1,
+                                        "precio": menu[pedido]
+                        }
                 else:
                     print("Tu pedido no esta en el menu")
                 pedido=input("Que otro plato deseas?: ")
