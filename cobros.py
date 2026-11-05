@@ -8,6 +8,14 @@ def buscar_mesa(mesas, numero_mesa):
     return None
 
 
+def mesas_activas(mesas):
+    resultado = []
+    for mesa in mesas:
+        if mesa["estado"] != "libre":
+            resultado.append(mesa)
+    return resultado
+
+
 def mesas_con_pedido(mesas):
     resultado = []
     for mesa in mesas:
@@ -49,25 +57,28 @@ def cobrar_mesa(mesas, numero_mesa, recaudacion):
 
     subtotal = calcular_subtotal(mesa["pedido"])
     recaudacion = recaudacion + subtotal
-    mesas.remove(mesa)
+    mesa["clientes"] = 0
+    mesa["estado"] = "libre"
+    mesa["pedido"] = {}
     print("Mesa", numero_mesa, "cobrada:", subtotal, "€")
     print("Recaudación de la noche:", recaudacion, "€")
     return mesas, recaudacion
 
 
 def consultar_estado(restaurante, mesas, recaudacion):
+    activas = mesas_activas(mesas)
     ocupacion = 0
-    for mesa in mesas:
+    for mesa in activas:
         ocupacion = ocupacion + mesa["clientes"]
 
     print("\n=== ESTADO DEL RESTAURANTE ===")
     print("Restaurante:", restaurante["nombre"])
     print("Capacidad:", restaurante["capacidad"])
     print("Ocupación actual:", ocupacion, "/", restaurante["capacidad"])
-    print("Mesas activas:", len(mesas), "/", restaurante["mesas_max"])
-    if len(mesas) == 0:
+    print("Mesas activas:", len(activas), "/", restaurante["mesas_max"])
+    if len(activas) == 0:
         print("  (no hay mesas activas)")
-    for mesa in mesas:
+    for mesa in activas:
         linea = ("  Mesa " + str(mesa["numero"]) + " - "
                  + str(mesa["clientes"]) + " clientes - " + mesa["estado"])
         if mesa["estado"] == "con_pedido":

@@ -75,6 +75,14 @@ def cargar_datos_restaurante():
     return restaurante, ruta_restaurante
 
 
+def siguiente_numero_mesa(mesas):
+    mayor = 0
+    for mesa in mesas:
+        if mesa["numero"] > mayor:
+            mayor = mesa["numero"]
+    return mayor + 1
+
+
 def cargar_y_sentar_grupos(restaurante, mesas):
     carpeta = "mesas"
     if not os.path.isdir(carpeta):
@@ -84,10 +92,15 @@ def cargar_y_sentar_grupos(restaurante, mesas):
         return mesas
     try:
         grupos = cargar_grupos(ruta_grupos)
-        mesas = sentar_grupos(grupos, restaurante, mesas)
+        numero_mesa = siguiente_numero_mesa(mesas)
+        resultado = sentar_grupos(grupos, restaurante, mesas, numero_mesa)
     except (OSError, ValueError, KeyError, TypeError):
         print("Error: el archivo de grupos no tiene el formato correcto.")
         return mesas
+    if isinstance(resultado, tuple):
+        mesas = resultado[0]
+    else:
+        mesas = resultado
     mostrar_mesas(mesas)
     return mesas
 
