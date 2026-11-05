@@ -17,7 +17,14 @@ def sentar_grupos(grupos, restaurante, mesas, numero_mesa):
             print("Numero de clientes invalido.")
             continue
 
-        if len(mesas) >= restaurante["mesas_max"]:
+        mesa_libre = None
+
+        for mesa in mesas:
+            if mesa["estado"] == "libre":
+                mesa_libre = mesa
+                break
+
+        if mesa_libre == None and len(mesas) >= restaurante["mesas_max"]:
             print("No quedan mesas disponibles.")
             break
 
@@ -25,30 +32,36 @@ def sentar_grupos(grupos, restaurante, mesas, numero_mesa):
             print("No hay capacidad suficiente para este grupo.")
             continue
 
-        mesa = {
-            "numero": numero_mesa,
-            "clientes": clientes,
-            "estado": "ocupada",
-            "pedido": {}
-        }
+        if mesa_libre != None:
+            mesa_libre["clientes"] = clientes
+            mesa_libre["estado"] = "ocupada"
+            mesa_libre["pedido"] = {}
+            mesa = mesa_libre
+        else:
+            mesa = {
+                "numero": numero_mesa,
+                "clientes": clientes,
+                "estado": "ocupada",
+                "pedido": {}
+            }
+            mesas.append(mesa)
+            numero_mesa += 1
 
-        mesas.append(mesa)
         ocupacion += clientes
-        numero_mesa += 1
-
         print("Grupo sentado en la mesa", mesa["numero"])
 
     return mesas, numero_mesa
-
 
 
 def contar_clientes(mesas):
     total = 0
 
     for mesa in mesas:
-        total += mesa["clientes"]
+        if mesa["estado"] != "libre":
+            total += mesa["clientes"]
 
     return total
+
 
 def mostrar_mesas(mesas):
     if len(mesas) == 0:
@@ -59,4 +72,6 @@ def mostrar_mesas(mesas):
             print("Clientes:", mesa["clientes"])
             print("Estado:", mesa["estado"])
             print("--------------------")
+
+
 
