@@ -53,9 +53,13 @@ def tomar_pedido(restaurante,mesa):
             mesa["pedido"]=pedidos
             mesa["estado"]="con_pedido"
     return mesa
-
-
-
-
     
 
+def calcular_subtotal(pedido):
+
+    total = 0
+
+    for plato, datos in pedido.items():
+        total = total + datos["cantidad"] * datos["precio"]
+
+    return total
