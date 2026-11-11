@@ -75,7 +75,7 @@ def consultar_estado(restaurante, mesas, recaudacion):
     print("Restaurante:", restaurante["nombre"])
     print("Capacidad:", restaurante["capacidad"])
     print("Ocupación actual:", ocupacion, "/", restaurante["capacidad"])
-    print("Mesas activas:", len(activas), "/", restaurante["max_mesas"])
+    print("Mesas activas:", len(activas), "/", restaurante["mesas_max"])
     if len(activas) == 0:
         print("  (no hay mesas activas)")
     for mesa in activas:

@@ -68,7 +68,7 @@ def cargar_datos_restaurante():
         return None, None
     if restaurante is None:
         return None, None
-    for clave in ["nombre", "capacidad", "max_mesas", "menu"]:
+    for clave in ["nombre", "capacidad", "mesas_max", "menu"]:
         if clave not in restaurante:
             print("Error: este archivo no es un restaurante (falta", clave + ").")
             return None, None
