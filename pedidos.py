@@ -35,8 +35,10 @@ def tomar_pedido(restaurante,mesa):
     pedidos={}
     if mesa["estado"] == "ocupada":
         mostrar_carta(restaurante)
+        pedido=input("Que desean para comer?: ")
+        print("(Escribe 'Eso es todo' cuando el comensal termine)")
         for cliente in range(mesa["clientes"]):
-            pedido=input("Que desean para comer?: ")
+            pedido=input("Comensal " + str(cliente + 1) + ", ¿qué desea para comer?: ")
             while pedido != "Eso es todo":
                 if pedido in menu.keys():
                      if pedido in pedidos:
