@@ -75,7 +75,7 @@ def consultar_estado(restaurante, mesas, recaudacion):
     print("Restaurante:", restaurante["nombre"])
     print("Capacidad:", restaurante["capacidad"])
     print("Ocupación actual:", ocupacion, "/", restaurante["capacidad"])
-    print("Mesas activas:", len(activas), "/", restaurante["max_mesas"])
+    print("Mesas activas:", len(activas), "/", restaurante["mesas_max"])
     if len(activas) == 0:
         print("  (no hay mesas activas)")
     for mesa in activas:
@@ -84,6 +84,10 @@ def consultar_estado(restaurante, mesas, recaudacion):
         if mesa["estado"] == "con_pedido":
             linea = linea + " - " + str(calcular_subtotal(mesa["pedido"])) + " €"
         print(linea)
+        
+        for plato, datos in mesa["pedido"].items():
+            print("     ", datos["cantidad"], "x", plato)
+
     mostrar_carta(restaurante)
     print("Recaudación de la noche:", recaudacion, "€")
 

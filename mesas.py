@@ -24,7 +24,7 @@ def sentar_grupos(grupos, restaurante, mesas, numero_mesa):
                 mesa_libre = mesa
                 break
 
-        if mesa_libre == None and len(mesas) >= restaurante["max_mesas"]:
+        if mesa_libre == None and len(mesas) >= restaurante["mesas_max"]:
             print("No quedan mesas disponibles.")
             break
 

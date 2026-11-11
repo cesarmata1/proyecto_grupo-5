@@ -15,12 +15,13 @@ El objetivo es desarrollar una aplicación de consola para gestionar un restaura
 - Implementar una funcionalidad original.
 
 ## Estructura del proyecto
-- `main.py`: menú principal de la aplicación.
-- `restaurante.py`: gestión de mesas, pedidos y cobros.
-- `datos.py`: lectura y escritura de archivos JSON.
+- `main.py`: menú principal de la aplicación (CLI).
+- `mesas.py`: carga de los JSON y asignación de mesas a los grupos.
+- `pedidos.py`: carta, toma de pedidos, subtotal y ampliación del menú.
+- `cobros.py`: cobro de mesas, consulta del estado y resumen de ventas.
 - `restaurante.json`: datos y menú del restaurante.
+- `grupos.json`: grupos de clientes que llegan al restaurante.
 - `.gitignore`: archivos que Git debe ignorar.
-- `mesas/`: archivos con grupos de clientes.
 
 ## Integrantes
 - Integrante 1: César Mata Rodríguez
