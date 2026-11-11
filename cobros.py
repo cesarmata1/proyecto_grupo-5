@@ -84,6 +84,10 @@ def consultar_estado(restaurante, mesas, recaudacion):
         if mesa["estado"] == "con_pedido":
             linea = linea + " - " + str(calcular_subtotal(mesa["pedido"])) + " €"
         print(linea)
+        
+        for plato, datos in mesa["pedido"].items():
+            print("     ", datos["cantidad"], "x", plato)
+
     mostrar_carta(restaurante)
     print("Recaudación de la noche:", recaudacion, "€")
 
